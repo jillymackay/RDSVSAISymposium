@@ -6,7 +6,7 @@ library(bslib)
 shinyUI(
   navbarPage(title = "R(D)SVS AI Symposium, 2026",
              id = "navbar",
-             
+            
              
              tabPanel(title = "AI Models versus Experts",
                       sidebarPanel(tags$h2("What did you rate the positive cow?"),
