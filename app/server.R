@@ -21,12 +21,12 @@ shinyServer(function(input, output, session){
     pcrowd <- c(input$pwel_1ex, input$pwel_2gd, input$pwel_3ne, input$pwel_4po, input$pwel_5aw, input$pwel_6cj)
     ncrowd <- c(input$nwel_1ex, input$nwel_2gd, input$nwel_3ne, input$nwel_4po, input$nwel_5aw, input$nwel_6cj)
     
-    levs <- c("I cannot judge from this photo",
-              "This animal has awful welfare",
-              "This animal has poor welfare",
-              "This animal has neither good nor poor welfare",
+    levs <- c("This animal has excellent welfare",
               "This animal has good welfare",
-              "This animal has excellent welfare")
+              "This animal has neither good nor poor welfare",
+              "This animal has poor welfare",
+              "This animal has awful welfare",
+              "I cannot judge from this photo")
     
     aidat <- tibble(model = c("Gemini",
                               "Gemini",

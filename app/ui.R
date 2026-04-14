@@ -77,10 +77,10 @@ shinyUI(
                       
                       mainPanel(tags$h2("How do you compare?"),
                                 
-                                fluidPage(column(width = 12,
-                                                 plotOutput(outputId = "p_test"))),
+                                # fluidPage(column(width = 12,
+                                #                  plotOutput(outputId = "p_test"))),
                                 
-                                fluidPage(column(width = 6,
+                                fluidPage(column(width = 12,
                                                  plotOutput(outputId = "p_comparison"))))
                       
                       ))
