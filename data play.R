@@ -154,3 +154,40 @@ alldat |>
        caption = "genAI Ratings of AI Generated Media (Cow)") +
   theme(legend.position = "none") +
   coord_flip() 
+
+
+
+
+make_crowd <- function(levs, times) {
+  
+  d_pexp <- tibble(rep(levs, times = pcrowd))  |> 
+    rename(response = `rep(levs, times = pcrowd)`) |> 
+    mutate(response = factor(response, levels = c("I cannot judge from this photo",
+                                                  "This animal has awful welfare",
+                                                  "This animal has poor welfare",
+                                                  "This animal has neither good nor poor welfare",
+                                                  "This animal has good welfare",
+                                                  "This animal has excellent welfare")),
+           rate = "Experts",
+           nwel = as.numeric(response),
+           welfare = "Positive")
+  
+  d_nexp <- tibble(rep(levs, times = ncrowd)) |> 
+    rename(response = `rep(levs, times = ncrowd)`) |> 
+    mutate(response = factor(response, levels = c("I cannot judge from this photo",
+                                                  "This animal has awful welfare",
+                                                  "This animal has poor welfare",
+                                                  "This animal has neither good nor poor welfare",
+                                                  "This animal has good welfare",
+                                                  "This animal has excellent welfare")),
+           rate = "Experts",
+           nwel = as.numeric(response),
+           welfare = "Negative")
+  
+  d_exp <- rbind(d_nexp, d_pexp) |> 
+    mutate(model = "Human")
+  
+  return(d_exp)
+  
+  
+}
