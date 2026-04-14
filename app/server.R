@@ -4,11 +4,14 @@ library(shiny)
 library(tidyverse)
 library(see)
 library(nord)
+library(bslib)
 
 
 
 shinyServer(function(input, output, session){
   
+  
+
   # ---------------------- Create Reactive Dataset
   
   
@@ -158,5 +161,28 @@ shinyServer(function(input, output, session){
      
      
    })
+   
+   
+   # ---------------------- Flat Images -------------------
+   
+   
+   output$logo <- renderImage({
+     # Return a list containing the filename
+     list(src = file.path("assets/logo.png"),
+          contentType = 'image/png',
+          width = 267,
+          height = 40,
+          alt = "R(D)SVS Logo")
+   }, deleteFile = FALSE)
+   
+   
+   output$logo1 <- renderImage({
+     # Return a list containing the filename
+     list(src = file.path("assets/logo.png"),
+          contentType = 'image/png',
+          width = 267,
+          height = 40,
+          alt = "R(D)SVS Logo")
+   }, deleteFile = FALSE)
    
 })

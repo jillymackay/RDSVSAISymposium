@@ -1,15 +1,16 @@
 library(shiny)
 library(DT)
+library(bslib)
 
 
 shinyUI(
   navbarPage(title = "R(D)SVS AI Symposium, 2026",
              id = "navbar",
-             theme = shinythemes::shinytheme("yeti"),
+             
              
              tabPanel(title = "AI Models versus Experts",
                       sidebarPanel(tags$h2("What did you rate the positive cow?"),
-                                   
+                                  
                                    numericInput(inputId = "pwel_1ex",
                                                 label = "How many people said excellent?",
                                                 value = 1,
@@ -31,7 +32,7 @@ shinyUI(
                                                 min = 0, 
                                                 max = 300),
                                    numericInput(inputId = "pwel_5aw",
-                                                label = "How many people said awfu?",
+                                                label = "How many people said awful?",
                                                 value = 0,
                                                 min = 0, 
                                                 max = 300),
@@ -64,7 +65,7 @@ shinyUI(
                                                 min = 0, 
                                                 max = 300),
                                    numericInput(inputId = "nwel_5aw",
-                                                label = "How many people said awfu?",
+                                                label = "How many people said awful?",
                                                 value = 1,
                                                 min = 0, 
                                                 max = 300),
@@ -74,14 +75,34 @@ shinyUI(
                                                 min = 0, 
                                                 max = 300)
                                    ),
+                      imageOutput("logo", inline = TRUE),
                       
-                      mainPanel(tags$h2("How do you compare?"),
-                                
-                                # fluidPage(column(width = 12,
-                                #                  plotOutput(outputId = "p_test"))),
-                                
-                                fluidPage(column(width = 12,
-                                                 plotOutput(outputId = "p_comparison"))))
+                      mainPanel(tags$h2("What did you think of the cow's welfare?"),
+                                tags$body("While I input some numbers, you can think about whether this counts
+                                          as a welfare assessment, or I'm simply asking your perception of welfare. 
+                                          It's honestly been playing on my mind. "),
+                               
                       
-                      ))
+                                
+                                ),
+                      
+                                
+                      
+                      ),
+             tabPanel(title = "Let's see!",
+                      
+                      
+                      
+                      
+                      mainPanel(imageOutput("logo1", inline = TRUE),
+                                tags$h2("You vs the AI",
+                                        
+                                        
+                                        fluidPage(plotOutput(outputId = "p_comparison"))))
+                      
+                      
+             
+             )
+)
+
 )
